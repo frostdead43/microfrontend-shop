@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Cart() {
   return (
     <div>Cart1</div>
   );
