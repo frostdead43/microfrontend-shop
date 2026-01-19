@@ -1,3 +1,4 @@
+import ProductDetailClient from "@/components/productDetails";
 import { fetchProductsById } from "@/lib/fetchersById";
 import { use } from "react";
 
@@ -6,8 +7,7 @@ export default function ProductDetail({params}) {
   const productDetail = use(fetchProductsById(id));
   return(
     <div>
-      <img src={productDetail.image} alt="" />
-      <h2>{productDetail.title}</h2>
+      <ProductDetailClient product={productDetail} />;
     </div>
   )
 }
