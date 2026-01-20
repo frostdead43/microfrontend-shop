@@ -17,8 +17,7 @@ export default function ProductDetailClient({ product }) {
         <div className="bg-gray-50 rounded-xl p-8 flex items-center justify-center">
           <img src={product.image} alt={product.title} className="max-h-96 object-contain"/>
         </div>
-        
- 
+
         <div className="space-y-6">
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">{product.title}</h2>
@@ -26,7 +25,7 @@ export default function ProductDetailClient({ product }) {
             <p className="text-gray-600 leading-relaxed">{product.description}</p>
             <div className="flex items-start gap-7">
               <p className="text-red-700 text-3x1 mb-4">{product.rating.rate}  point of</p>
-              <p>{product.rating.count} Review</p>
+              <p>{product.rating.count} Reviews</p>
             </div>
               <div className="flex items-center gap-4 mb-6">
               <span className="text-2xl font-bold text-gray-900">$ {product.price} </span>
