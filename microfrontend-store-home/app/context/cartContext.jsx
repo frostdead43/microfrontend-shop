@@ -46,14 +46,23 @@ function decreaseQuantity(id) {
   ))
 }
 
+function remove(id) {
+  setCart(prev => {
+    const updatedItem = prev.filter(i => i.id !== id)
+    localStorage.setItem("cart", JSON.stringify(updatedItem))
+    return updatedItem;
+  })
+}
+
 function total() {
 cart.reduce((sum, item) => sum + Number(item.price) * item.quantity,0)
 } 
 
 
 
+
   return(
-    <CartContext.Provider value={{cart,setCart,addToCart, isOpen, setIsOpen, increaseQuantity, decreaseQuantity, total}}>
+    <CartContext.Provider value={{cart,setCart,addToCart, isOpen, setIsOpen, increaseQuantity, decreaseQuantity, total, remove}}>
       {children}
     </CartContext.Provider>
   );

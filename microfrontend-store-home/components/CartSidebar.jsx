@@ -3,7 +3,7 @@ import { useCart } from "@/app/context/cartContext";
 import Link from "next/link";
 
 export default function CartSidebar() {
-  const { cart, isOpen, setIsOpen, increaseQuantity, decreaseQuantity,total } = useCart();
+  const { cart, isOpen, setIsOpen, increaseQuantity, decreaseQuantity,total, remove } = useCart();
 
   return (
     <>
@@ -25,13 +25,13 @@ export default function CartSidebar() {
 
           {cart.map((item, i) => (
             <div key={i} className="flex gap-3 mb-4">
-              <img
-                src={item.image} className="w-12 h-12 object-contain" alt=""/>
+              <img src={item.image} className="w-12 h-12 object-contain" alt=""/>
               <div>
                 <p className="text-sm font-medium">{item.title}</p>
                 <p className="text-xs text-gray-500">${item.price}</p>
                 <p className="text-xs text-blue-500">{item.quantity}</p>
                 <p className="text-xs text-gray-500">${(item.price * item.quantity).toFixed(2)}</p>
+                <button onClick={() => remove(item.id)}>Delete</button>
                 <div className="flex items-center gap-2 mt-1">
                   <button onClick={() => increaseQuantity(item.id)}>+</button>
                   <button onClick={() => decreaseQuantity(item.id)}>-</button>
