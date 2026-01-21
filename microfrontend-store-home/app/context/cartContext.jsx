@@ -59,8 +59,6 @@ cart.reduce((sum, item) => sum + Number(item.price) * item.quantity,0)
 } 
 
 
-
-
   return(
     <CartContext.Provider value={{cart,setCart,addToCart, isOpen, setIsOpen, increaseQuantity, decreaseQuantity, total, remove}}>
       {children}

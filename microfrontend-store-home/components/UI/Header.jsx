@@ -8,7 +8,7 @@ export default function Header() {
                 <span className="text-orange-500 font-bold text-xl">O</span>
             </div>
             <div>
-                <h1 className="text-xl font-bold">MicroFrontend</h1>
+<a href="/products"><h1 className="text-xl font-bold">MicroFrontend</h1></a>
             </div>
         </div>
 
@@ -16,11 +16,11 @@ export default function Header() {
             <a href="#" className="font-medium hover:text-orange-200 transition-colors duration-200">
                 <i className="fas fa-home mr-1"></i> Home
             </a>
-            <a href="#" className="font-medium hover:text-orange-200 transition-colors duration-200">
-                <i className="fas fa-info-circle mr-1"></i> About
+            <a href="/products" className="font-medium hover:text-orange-200 transition-colors duration-200">
+                <i className="fas fa-info-circle mr-1"></i> Products
             </a>
             <a href="#" className="font-medium hover:text-orange-200 transition-colors duration-200">
-                <i className="fas fa-briefcase mr-1"></i> Services
+                <i className="fas fa-briefcase mr-1"></i> About
             </a>
             <a href="#" className="font-medium hover:text-orange-200 transition-colors duration-200">
                 <i className="fas fa-envelope mr-1"></i> Contact

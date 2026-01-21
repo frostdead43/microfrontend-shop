@@ -1,8 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "./context/cartContext";
+import Header from "@/components/UI/Header";
 import Footer from "@/components/UI/Footer";
-import Header from "@/components/Header";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         <CartProvider>
         <Header/>
          {children}
+         <Toaster position="top-left" />
         <Footer/>
         </CartProvider>
     
