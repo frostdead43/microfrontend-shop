@@ -19,6 +19,9 @@ services:
     build: ./container
     ports:
       - "3000:3000"
+    environment:
+      HOME_APP_URL: http://home:3000
+      CART_APP_URL: http://cart:3000
     depends_on:
       - home
       - cart
