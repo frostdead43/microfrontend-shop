@@ -4,14 +4,12 @@ const nextConfig = {
     return[
       {
         source: "/products/:path*",
-        destination: "http://localhost:3001/products/:path*",
+        destination: `${process.env.HOME_APP_URL}/products/:path*`,
       },
-
-         {
+      {
         source: "/cart/:path*",
-        destination: "http://localhost:3002/cart/:path*",
+        destination: `${process.env.CART_APP_URL}/cart/:path*`,
       },
-
     ]
   }
 };
