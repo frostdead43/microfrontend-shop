@@ -1,4 +1,5 @@
 "use client"
+import Card from "@/components/CartItem";
 import AddressForm from "@/components/UI/AddressForm";
 import { useEffect, useState } from "react";
 
@@ -17,20 +18,15 @@ export default function Cart() {
   }
 
   return (
-      <div className="p-6">
-      <h1 className="text-xl font-bold mb-4">Cart</h1>
-      {cartItem.map(item => (
-        <div key={item.id} className="flex items-center gap-4 border-b py-4">
-          <img src={item.image} className="w-16 h-16 object-contain" />
-          <div>
-            <h2>{item.title}</h2>
-            <p>Quantity: {item.quantity}</p>
-            <p>{item.price} $</p>
-            <h6>{item.price * item.quantity}$</h6>
-          </div>
-        </div>
-      ))}
-      <AddressForm />
+    <div className="p-6 grid grid-cols-2 gap-50">
+      <div>
+        <h1 className="text-xl font-bold mb-4">Cart</h1>
+        {cartItem.map(item => (
+          <Card key={item.id} item = {item}/>
+        ))}
+        <button className="mt-37  w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 rounded-lg transition duration-200">Pay Now!</button>
+      </div>
+        <AddressForm />
     </div>
   );
 }

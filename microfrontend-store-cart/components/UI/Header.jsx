@@ -39,7 +39,7 @@ export default function Header() {
 
     <div className="bg-orange-600 py-2 px-8 text-center text-sm text-orange-100">
         <i className="fas fa-bullhorn mr-2"></i> New Year sales have begun! • 
-        <a href="#" className="underline ml-1 hover:text-white">Special offer available</a>
+        <a href="/products" className="underline ml-1 hover:text-white">Special offers available</a>
     </div>
 </header>
     </div>
