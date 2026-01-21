@@ -1,9 +1,8 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-COPY dist/ ./dist/
 
 
 RUN npm ci --only=production --no-audit
