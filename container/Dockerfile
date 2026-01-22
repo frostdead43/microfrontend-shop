@@ -2,10 +2,16 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package*.json ./
+RUN npm install
 
-RUN npm ci --only=production --no-audit
+COPY . .
+
+ENV HOME_APP_URL=http://home:3000
+ENV CART_APP_URL=http://cart:3000
+
+RUN npm run build
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]

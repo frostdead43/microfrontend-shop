@@ -1,27 +1,21 @@
 services:
   home:
     build: ./microfrontend-store-home
+    container_name: home
     ports:
       - "3001:3000"
-    environment:
-      PORT: 3000
-      NODE_ENV: production
 
   cart:
     build: ./microfrontend-store-cart
+    container_name: cart
     ports:
       - "3002:3000"
-    environment:
-      PORT: 3000
-      NODE_ENV: production
 
   container:
     build: ./container
+    container_name: container
     ports:
       - "3000:3000"
-    environment:
-      HOME_APP_URL: http://home:3000
-      CART_APP_URL: http://cart:3000
     depends_on:
       - home
       - cart

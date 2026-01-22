@@ -26,7 +26,7 @@ export default function Footer() {
                     © 2026 Mako. All rights reserved ©
                 </div>
                 <div className="flex space-x-4">
-                  <p>Mehmet Akif Küçükyılmaz</p>
+                  <p>Mehmet Akif Küçükyilmaz</p>
                 </div>
             </div>
         </div>

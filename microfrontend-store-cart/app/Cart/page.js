@@ -14,7 +14,7 @@ export default function Cart() {
   },[]);
   
    if (cartItem.length === 0) {
-    return <p>Your basket is empty! How about we go shopping?</p>;
+    return <p className="text-center text-xl text-orange-800 italic py-10 animate-pulse">🛒 Your basket is empty! How about we go shopping?</p>;
   }
 
   return (
