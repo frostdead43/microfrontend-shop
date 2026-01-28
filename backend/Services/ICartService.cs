@@ -13,6 +13,6 @@ public interface ICartService
 
   Task<CartItem> IncreaseQuantityAsync(int id);
 
-  Task<CartItem?> DecreaseQuantityAsync(int id);
+  Task<CartItem> DecreaseQuantityAsync(int id);
 
 }
