@@ -2,16 +2,19 @@
 import Card from "@/components/CartItem";
 import AddressForm from "@/components/UI/AddressForm";
 import { useEffect, useState } from "react";
+import cartService from "@/lib/cartApi";
 
 export default function Cart() {
   const [cartItem,setCardItem] = useState([]);
 
   useEffect(() => {
-    const storedCart  = localStorage.getItem("cart");
-    if (storedCart ) {
-      setCardItem(JSON.parse(storedCart))
-    }
-  },[]);
+    loadCartFromBackend();
+  }, []);
+
+  async function loadCartFromBackend() {
+    const res = await cartService.getCart();
+    setCardItem(res.items || res.data || []);
+  }
   
    if (cartItem.length === 0) {
     return <p className="text-center text-xl text-orange-800 italic py-10 animate-pulse">🛒 Your basket is empty! How about we go shopping?</p>;
