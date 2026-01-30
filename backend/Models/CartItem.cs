@@ -10,7 +10,7 @@ public class CartItem
 
   public decimal Price { get; set; }
 
-  public string ImgUrl { get; set; }=string.Empty;
+  public string Image  { get; set; }=string.Empty;
 
   public int Quantity { get; set; }
 }

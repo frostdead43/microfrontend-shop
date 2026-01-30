@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:5187/api/cart'
+  baseURL: 'http://localhost:5197/api/cart',
+  headers: {'Content-Type': 'application/json'}
 });
 
 const cartService = {

@@ -1,5 +1,6 @@
 "use client"
 import { createContext, useContext, useState, useEffect } from "react";
+import cartService from "@/lib/cartApi";
 
 const CartContext = createContext();
 
@@ -9,65 +10,61 @@ export function CartProvider({children}) {
   console.log(cart);
 
   useEffect(() => {
-    const stored = localStorage.getItem("cart");
-    if (stored) setCart(JSON.parse(stored));
-    console.log(stored);
+    loadCartFromBackend();
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-  
+  async function loadCartFromBackend() {
+    const res = await cartService.getCart();
+    setCart(res.data || []);
+  }
 
-function addToCart(x) {
-  setCart(prev => {
-    const currentItem = prev.find(i => i.id === x.id);
+  async function addToCart(x) {
+    setCart(prev => {
+      const currentItem = prev.find(i => i.id === x.id);
 
-    if (currentItem) {
-      return prev.map(i =>
-        i.id === x.id? { ...i, quantity: i.quantity + 1 }: i);
+      if (currentItem) {
+        return prev.map(i =>
+          i.id === x.id ? { ...i, quantity: i.quantity + 1 } : i);
+      }
+
+      return [...prev, { ...x, quantity: 1 }];
+    });
+    
+    const res = await cartService.addToCart(x);
+    if (res.data) {
+      setCart(prev => prev.map(p => p.id === x.id ? {...p, ...res.data} : p));
     }
+    setIsOpen(true);
+  }
 
-    console.log(currentItem);
-    return [...prev, { ...x, quantity: 1 }];
-  });
-   setIsOpen(true);
-}
+  async function increaseQuantity(id) {
+    setCart(prev => (
+      prev.map(i => i.id === id ? {...i, quantity: i.quantity + 1} : i)
+    ));
+    await cartService.increaseQuantity(id);
+  }
 
-function increaseQuantity(id) {
-  setCart(prev => (
-    prev.map(i => i.id === id ? {...i, quantity:i.quantity + 1}:i)
-  ))
-}
+  async function decreaseQuantity(id) {
+    setCart(prev => (
+      prev.map(i => i.id === id ? {...i, quantity: i.quantity - 1} : i)
+    ));
+    await cartService.decreaseQuantity(id);
+  }
 
-function decreaseQuantity(id) {
-  setCart(prev => (
-    prev.map(i => i.id === id ? {...i, quantity:i.quantity - 1}:i)
-  ))
-}
+  async function remove(id) {
+    setCart(prev => prev.filter(i => i.id !== id));
+    await cartService.removeFromCart(id);
+  } 
 
-function remove(id) {
-  setCart(prev => {
-    const updatedItem = prev.filter(i => i.id !== id)
-    localStorage.setItem("cart", JSON.stringify(updatedItem))
-    return updatedItem;
-  })
-}
+  function total() {
+    return cart.reduce((sum, item) => sum + Number(item.price) * item.quantity, 0);
+  } 
 
-function total() {
-cart.reduce((sum, item) => sum + Number(item.price) * item.quantity,0)
-} 
-
-
-  return(
-    <CartContext.Provider value={{cart,setCart,addToCart, isOpen, setIsOpen, increaseQuantity, decreaseQuantity, total, remove}}>
+  return (
+    <CartContext.Provider value={{cart,setCart,addToCart,isOpen,setIsOpen,increaseQuantity,decreaseQuantity,total,remove,refetchCart: loadCartFromBackend}}>
       {children}
     </CartContext.Provider>
   );
-}
+}  
 
 export const useCart = () => useContext(CartContext);
-
-
-
-

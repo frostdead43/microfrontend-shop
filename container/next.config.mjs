@@ -7,6 +7,10 @@ const CART_URL = process.env.VERCEL ? "https://cart-app.vercel.app":"http://cart
 const nextConfig = {
   async rewrites() {
     return[
+       {
+        source: "/api/cart/:path*",
+        destination: "http://localhost:5197/api/cart/:path*", 
+      },
       {
         source: "/products/:path*",
         destination: `${HOME_URL}/products/:path*`,
