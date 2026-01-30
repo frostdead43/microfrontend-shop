@@ -13,8 +13,8 @@ export default function Footer() {
                 </div>
                 <div className="flex space-x-6">
                     <a href="#" className="hover:text-orange-200 transition-colors duration-200">Home</a>
-                    <a href="#" className="hover:text-orange-200 transition-colors duration-200">About</a>
-                    <a href="#" className="hover:text-orange-200 transition-colors duration-200">Services</a>
+                    <a href="/products" className="hover:text-orange-200 transition-colors duration-200">Products</a>
+                    <a href="/cart" className="hover:text-orange-200 transition-colors duration-200">Cart</a>
                     <a href="#" className="hover:text-orange-200 transition-colors duration-200">Contact</a>
                 </div>
             </div>

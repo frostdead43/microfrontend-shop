@@ -19,8 +19,8 @@ export default function Header() {
             <a href="/products" className="font-medium hover:text-orange-200 transition-colors duration-200">
                 <i className="fas fa-info-circle mr-1"></i> Products
             </a>
-            <a href="#" className="font-medium hover:text-orange-200 transition-colors duration-200">
-                <i className="fas fa-briefcase mr-1"></i> About
+            <a href="/cart" className="font-medium hover:text-orange-200 transition-colors duration-200">
+                <i className="fas fa-briefcase mr-1"></i> Cart
             </a>
             <a href="#" className="font-medium hover:text-orange-200 transition-colors duration-200">
                 <i className="fas fa-envelope mr-1"></i> Contact
