@@ -1,5 +1,4 @@
 const HOME_URL = process.env.VERCEL ? "https://home-app.vercel.app":"http://home:3000";
-
 const CART_URL = process.env.VERCEL ? "https://cart-app.vercel.app":"http://cart:3000";
 
 
@@ -9,7 +8,7 @@ const nextConfig = {
     return[
        {
         source: "/api/cart/:path*",
-        destination: "http://localhost:5197/api/cart/:path*", 
+        destination: "http://backend-api:5197/api/cart/:path*"
       },
       {
         source: "/products/:path*",

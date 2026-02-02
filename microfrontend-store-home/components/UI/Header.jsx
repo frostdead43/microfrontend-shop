@@ -8,18 +8,18 @@ export default function Header() {
                 <span className="text-orange-500 font-bold text-xl">O</span>
             </div>
             <div>
-<a href="/products"><h1 className="text-xl font-bold">MicroFrontend</h1></a>
+                <a href="#"><h1 className="text-xl font-bold">MicroFrontend</h1></a>
             </div>
         </div>
 
         <div className="flex space-x-6">
-            <a href="#" className="font-medium hover:text-orange-200 transition-colors duration-200">
+            <a href="http://localhost:3001/products" className="font-medium hover:text-orange-200 transition-colors duration-200">
                 <i className="fas fa-home mr-1"></i> Home
             </a>
-            <a href="/products" className="font-medium hover:text-orange-200 transition-colors duration-200">
+            <a href="http://localhost:3001/products" className="font-medium hover:text-orange-200 transition-colors duration-200">
                 <i className="fas fa-info-circle mr-1"></i> Products
             </a>
-            <a href="/cart" className="font-medium hover:text-orange-200 transition-colors duration-200">
+            <a href="http://localhost:3002/cart" className="font-medium hover:text-orange-200 transition-colors duration-200">
                 <i className="fas fa-briefcase mr-1"></i> Cart
             </a>
             <a href="#" className="font-medium hover:text-orange-200 transition-colors duration-200">

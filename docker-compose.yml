@@ -1,21 +1,39 @@
+version: '3.8'
+
 services:
+  backend:
+    build: ./backend
+    container_name: backend-api
+    ports:
+      - "5197:5197"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5197
+
   home:
     build: ./microfrontend-store-home
-    container_name: home
+    container_name: home-app
     ports:
       - "3001:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend-api:5197
 
   cart:
     build: ./microfrontend-store-cart
-    container_name: cart
+    container_name: cart-app
     ports:
       - "3002:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend-api:5197
 
   container:
     build: ./container
-    container_name: container
+    container_name: container-app
     ports:
       - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend-api:5197
     depends_on:
       - home
       - cart
+      - backend

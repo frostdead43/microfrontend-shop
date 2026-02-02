@@ -69,7 +69,7 @@ export default function CartSidebar() {
         </div>
 
         <div className="p-4 border-t">
-          <Link href="/cart" className="block text-center bg-orange-500 text-white py-2 rounded"> Pay Now! </Link>
+          <Link href="http://localhost:3002/cart" className="block text-center bg-orange-500 text-white py-2 rounded"> Pay Now! </Link>
         </div>
       </aside>
     </>
